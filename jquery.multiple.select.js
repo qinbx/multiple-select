@@ -417,7 +417,9 @@
             var that = this;
             this.$selectItems.prop('checked', false);
             $.each(values, function (i, value) {
-                that.$selectItems.filter('[value="' + value + '"]').prop('checked', true);
+                that.$selectItems.filter(function(){ 
+                    return $(this).attr('value')===value; 
+                }).prop('checked', true);
             });
             this.$selectAll.prop('checked', this.$selectItems.length ===
                 this.$selectItems.filter(':checked').length);
